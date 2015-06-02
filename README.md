@@ -4,8 +4,8 @@
 
 ###Environment
 ####Spark 1.3.1
-Method => Logistic Regression
-Classes => 2(normal and abnormal)
+**Method => Logistic Regression**<br>
+**Classes => 2(normal and abnormal)**<br>
 
 ####Execute
 ```
