@@ -4,7 +4,7 @@
 Method => Logistic Regression
 Classes => 2(normal and abnormal)
 
-Training Data only use two labels(0 or 1)
+Training Data only use two labels(0 or 1)<br>
 Testing Data use corrected data
 
 ## Result
