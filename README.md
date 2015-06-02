@@ -1,9 +1,17 @@
-# BigDataAnalystic Homework2
+# BigDataAnalytics Homework2
 
 ##Introduction
+
+###Environment
+####Spark 1.3.1
 Method => Logistic Regression
 Classes => 2(normal and abnormal)
 
+####Execute
+```
+$SPARK_HOME/bin/spark-submit kddtrain.py
+```
+####Training Data (Kddcup99)
 Training Data only use two labels(0 or 1)<br>
 Testing Data use corrected data
 
