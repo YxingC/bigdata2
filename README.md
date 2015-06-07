@@ -1,5 +1,14 @@
 # BigDataAnalytics Homework2
 
+####Team Member : 
+  **B10015035 蘇育民**  
+
+  **B10015036 陳尹清**
+
+  **B10015037 蘇斌綸**
+
+
+
 ##Introduction
 
 ###Environment
