@@ -8,7 +8,7 @@ import org.apache.spark.mllib.util.MLUtils
 
 import org.apache.spark._
 
-object svm {
+object training {
   def main(args: Array[String]) {
     val conf = new SparkConf().setAppName("svm Classification")
       .set("spark.executor.memory", "3G")
@@ -17,20 +17,30 @@ object svm {
     val sc = new SparkContext(conf)
 
     
-    val data = sc.textFile("/home/yxing/result_multi.svm").cache()
-    val trainingData = data.map { line =>
-      val parts = line.split(' ')
-      LabeledPoint(parts(0).toDouble, Vectors.dense(parts.tail.map(x => x.toDouble)))
-    }
+    val data4train = sc.textFile("/home/yxing/input/kddcup.data_unlabeled.txt")
+    val labelData = sc.textFile("/home/yxing/input/kddcup.data.five.label")
 
-    
-    // val testingData = MLUtils.loadLibSVMFile(sc, "/home/yxing/")
-    
+    val features = data4train.map(line => line.split(" "))
+      .map(A => A.map(_.toDouble))
+      .zipWithIndex
+      .map(p => (p._2, p._1))
+
+    val labels = labelData.map(_.toDouble)
+      .map(x => Array(x))
+      .zipWithIndex
+      .map(p => (p._2, p._1))
+
+    val trainingData = (labels union features)
+      .reduceByKey(_ ++ _)
+      .sortByKey()
+      .map(x => x._2)
+      .map(A => LabeledPoint(A.head, Vectors.dense(A.tail)))
+
     val model = new LogisticRegressionWithLBFGS()
-      .setNumClasses(23)
+      .setNumClasses(5)
       .run(trainingData)
 
-    model.save(sc, "/home/yxing/model")
+    model.save(sc, "/home/yxing/model_L_nonSVD")
      
     println("Job Done!!!")
 
