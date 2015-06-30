@@ -29,7 +29,7 @@ Testing Data use corrected data
 **Recall = 0.80158148911**<br>
 **Training Error = 0.00431342199165**<br>
 tp = 3909555, tn = 16095, fp = 5034, fn = 967747
-3909555.0 16095.0 5034.0 967747.0  
+
 
 
 ## Confusion Matrix
